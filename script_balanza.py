@@ -22,9 +22,8 @@ except KeyboardInterrupt:
 # import serial.tools.list_ports
 
 # def find_scale():
-#     """Busca puertos disponibles y prueba configuraciones estándar."""
 #     ports = serial.tools.list_ports.comports()
-#     baud_rates = [9600, 115200, 4800]  # Configuraciones comunes
+#     baud_rates = [9600, 115200, 4800]
 #     for port in ports:
 #         for baud_rate in baud_rates:
 #             try:
@@ -41,7 +40,6 @@ except KeyboardInterrupt:
 #     return None
 
 # def read_scale(serial_connection):
-#     """Lee datos de la balanza."""
 #     try:
 #         while True:
 #             line = serial_connection.readline().decode('utf-8').strip()
