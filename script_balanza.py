@@ -2,7 +2,7 @@ import serial
 
 # Configuracion del puerto de serie que no conosco supongo COM3 segun yo.
 port = "COM3"  # Cambiar
-baud_rate = 9600  # Ajustar segun la configuracion de la banaza para que funcione / 115200
+baud_rate = 9600  # Ajustar segun la configuracion de la banaza para que funcione / 115200 / 1200 /2400 / 4800 
 
 try:
     with serial.Serial(port, baud_rate, timeout=1) as ser:
