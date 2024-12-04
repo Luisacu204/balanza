@@ -1,0 +1,5 @@
+Identificar el puerto COM:
+
+Conecta la balanza a la PC.
+Abre el "Administrador de dispositivos" (Windows + R, escribe devmgmt.msc y presiona Enter).
+Busca en la sección "Puertos (COM y LPT)" el puerto COM asignado a la balanza (por ejemplo, COM3).
