@@ -1,21 +1,41 @@
 import serial
 
-# Configuracion del puerto de serie que no conosco supongo COM3 segun yo.
-port = "COM3"  # Cambiar
-baud_rate = 9600  # Ajustar segun la configuracion de la banaza para que funcione / 115200 / 1200 /2400 / 4800 
+port = 'COM3'
+baudrate = 9600
+parity = serial.PARITY_EVEN
+stopbits = serial.STOPBITS_ONE
+bytesize = serial.SEVENBITS
+
+ser = serial.Serial(port, baudrate=baudrate, parity=parity, stopbits=stopbits, bytesize=bytesize, timeout=1)
 
 try:
-    with serial.Serial(port, baud_rate, timeout=1) as ser:
-        print(f"Conectado a la balanza en el puerto {port}")
+    ser.write(b'W\r')
+    response = ser.readline().decode('ascii').strip()
+    print(f"Peso recibido: {response}")
+except Exception as e:
+    print(f"Error en la comunicación: {e}")
+finally:
+    ser.close()
 
-        while True:
-            line = ser.readline().decode('utf-8').strip()
-            if line:
-                print(f"Peso: {line}")
-except serial.SerialException as e:
-    print(f"Error al conectar con la balanza: {e}")
-except KeyboardInterrupt:
-    print("\nCerrando el programa.")
+
+# import serial
+
+# # Configuracion del puerto de serie que no conosco supongo COM3 segun yo.
+# port = "COM3"  # Cambiar
+# baud_rate = 9600  # Ajustar segun la configuracion de la banaza para que funcione / 115200 / 1200 /2400 / 4800 
+
+# try:
+#     with serial.Serial(port, baud_rate, timeout=1) as ser:
+#         print(f"Conectado a la balanza en el puerto {port}")
+
+#         while True:
+#             line = ser.readline().decode('utf-8').strip()
+#             if line:
+#                 print(f"Peso: {line}")
+# except serial.SerialException as e:
+#     print(f"Error al conectar con la balanza: {e}")
+# except KeyboardInterrupt:
+#     print("\nCerrando el programa.")
 
 #------------------------------------------------------------------------------------------------
 # import serial
