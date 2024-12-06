@@ -1,19 +1,15 @@
 import serial
 
-# Configuración del puerto serie
-port = 'COM3'  # Cambia esto según tu sistema (e.g., COM1 en Windows)
+port = 'COM3'
 baudrate = 9600
 parity = serial.PARITY_EVEN
 stopbits = serial.STOPBITS_ONE
 bytesize = serial.SEVENBITS
 
-# Establecer conexión
 ser = serial.Serial(port, baudrate=baudrate, parity=parity, stopbits=stopbits, bytesize=bytesize, timeout=1)
 
 try:
-    # Enviar comando para solicitar peso
     ser.write(b'W\r')
-    # Leer la respuesta
     response = ser.readline().decode('ascii').strip()
     print(f"Peso recibido: {response}")
 except Exception as e:
