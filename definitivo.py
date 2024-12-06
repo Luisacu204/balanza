@@ -8,7 +8,7 @@ baud_rate = 9600  # Asegúrate de que coincida con la configuración de la balan
 def conectar_balanza():
     """Intenta conectar al puerto serie y retorna el objeto Serial."""
     try:
-        ser = serial.Serial(port, baud_rate, timeout=1)
+        ser = serial.Serial(port, baud_rate, timeout=10)
         print(f"Conectado a la balanza en el puerto {port}")
         return ser
     except serial.SerialException as e:
@@ -20,7 +20,7 @@ def enviar_comando(ser, comando):
     try:
         ser.write(comando.encode('utf-8'))  # Enviar el comando
         ser.flush()  # Asegurarse de que se envió
-        time.sleep(0.5)  # Breve pausa para esperar la respuesta
+        time.sleep(5)  # Breve pausa para esperar la respuesta
         respuesta = ser.readline().decode('utf-8', errors='ignore').strip()
         print(f"Respuesta de la balanza: {respuesta}")
         return respuesta
@@ -37,6 +37,8 @@ if serial_conn:
     
     # Esperar y leer datos continuamente (opcional)
     while True:
+
+        
         try:
             raw_data = serial_conn.readline()
             if raw_data:
