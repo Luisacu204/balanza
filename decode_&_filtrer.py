@@ -3,6 +3,7 @@ import time
 import re
 import keyboard  # Asegúrate de instalar esta biblioteca con `pip install keyboard`
 
+
 # Configuración del puerto serial (ajusta según tu puerto)
 PUERTO_SERIAL = 'COM6'  # Cambia esto a tu puerto, por ejemplo, '/dev/ttyUSB0' en Linux
 BAUD_RATE = 9600        # Asegúrate de que esta es la tasa de baudios correcta para tu balanza
